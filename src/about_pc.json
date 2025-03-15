@@ -1,0 +1,13 @@
+{
+  "owner": "LeeCash",
+  "password": "password",
+  "links": {
+    "github": "https://github.com/your-repo",
+    "docs": "https://example.com/docs"
+  },
+  "installed": {
+    "terminal": "terminal",
+    "browser": "browser"
+  },
+  "terminal_location": "~"
+}
