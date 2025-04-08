@@ -12,6 +12,8 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^5.1.0",
+    "fs": "^0.0.1-security",
+    "ini": "^5.0.0",
     "mysql2": "^3.14.0"
   }
 }
