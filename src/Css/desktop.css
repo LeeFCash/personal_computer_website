@@ -1,0 +1,22 @@
+.emptyBar{
+	background-color: black;
+	position: fixed;
+	bottom: 0;
+}
+.emptyBar_search{
+	color: white;
+	font-size: 2vh;
+}
+.above_bar{
+	max-height: 98vh;
+}
+.searchClick{
+	background-color: black;
+	position: fixed;
+	bottom: 2vh;
+	height: 20vh;
+}
+.searchClick_text{
+	font-size: 2vh;
+	color: white;
+}
