@@ -3,9 +3,17 @@
 	position: fixed;
 	bottom: 0;
 }
+.bottom_bar_allIMG{
+	max-height: 5vh;
+	max-width: 100vw;
+}
 .emptyBar_search{
+	display: flex;
+	flex-direction: row;
 	color: white;
 	font-size: 2vh;
+	max-height: 5vh;
+	max-width: 100vw;
 }
 .above_bar{
 	max-height: 98vh;
@@ -13,10 +21,34 @@
 .searchClick{
 	background-color: black;
 	position: fixed;
-	bottom: 2vh;
-	height: 20vh;
+	bottom: 5vh;
+	max-height: 30vh;
+	max-width: 30vw;
 }
 .searchClick_text{
 	font-size: 2vh;
 	color: white;
+}
+.aboutMe_header{
+	width: 100%;
+	height: 10%;
+}
+.aboutMe_Hui{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: 10%;
+}
+.aboutMe_nav{
+	width: 100%;
+	height: 10%;
+}
+.aboutMe_Hui_li{
+	width: 100%;
+	height: 10%;
+	list-style-type: none;
+}
+.aboutMe_buttons{
+	font-size: 2vh;
+	border-radius: 50px;
 }
