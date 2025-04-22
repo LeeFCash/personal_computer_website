@@ -47,14 +47,7 @@ return (<div className='pc_div'>
 	      minWidth={200}
 	      minHeight={100}
 	    >
-	      <div style={{
-	        background: 'white',
-	        border: '1px solid #ccc',
-	        width: '100%',
-	        height: '100%',
-	        boxSizing: 'border-box',
-	        padding: '10px'
-	      }}>
+	      <div className='aboutMe' style={{boxSizing: 'border-box'}}>
 		<header className='aboutMe_header'>
 		 <nav className='aboutMe_nav'>
 		  <ui className='aboutMe_Hui'>
@@ -64,9 +57,79 @@ return (<div className='pc_div'>
 		  </ui>
 		 </nav>
 		</header>
-		{ aboutMeAppPage === 1 && <p>Drag me! Resize me!1</p>}
-		{ aboutMeAppPage === 2 && <p>Drag me! Resize me!2</p>}
-		{ aboutMeAppPage === 3 && <p>Drag me! Resize me!3</p>}
+		{ aboutMeAppPage === 1 && <div className='aboutMe_tab1d'>
+		  <section>
+                   <img src={require("./../IMG/MeIMG.jpg")} alt='404'></img>
+                   <div>
+                    <div>
+		     <p>Name: Lee Cash</p>
+		    </div>
+                    <div>
+		     <p>Age: 19</p>
+		    </div>
+                    <div>
+		     <p>Education: High school Diploma</p>
+		    </div>
+            	   </div>
+        	  </section>
+		  <section className='aboutMe_tab1s2'>
+                   <div>
+                    <img src={require("./../IMG/diploma.jpg")} alt='error 404'></img>
+                    <p> I've received this diploma as a result of graduating.</p>
+                   </div>
+                   <div>
+                    <img src={require("./../IMG/awardDC.png")} alt='error 404'></img>
+                    <p> The Teachers at Hixson High School anonymously voted 3 people to receive a reward for self discipline.</p>
+                   </div>
+                   <div>
+                    <img src={require("./../IMG/rewardTeaching.jpg")} alt='error 404'></img>
+                    <p>I got the Denise Burt-Turner Special Needs P.E award for taking a small group of special needs students to a classroom and teaching them.</p>
+                   </div>
+                  </section>
+		</div>}
+		{ aboutMeAppPage === 2 && <div className='aboutMe_tab2d'>
+		 <section className='aboutMe_tab2s1'>
+        	  <h1>Skill set</h1>
+        	  <ul>
+          	   <li>JavaScript</li>
+          	   <li>HTML</li>
+          	   <li>Css</li>
+        	  </ul>
+        	  <h1>Links</h1>
+        	  <ul>
+           	   <li><a href="https://docs.google.com/document/d/11U-PeRWKpVxDgFKCo7N4ncxbx-QHA7CDqgkC0bXaRfo/edit?usp=sharing" target="_blank"> Click this to see Resume</a></li>
+          	   <li><a href="https://github.com/LeeFCash" target="_blank"> Click this to see my github</a></li>
+          	   <li><a href="https://youtube.com/playlist?list=PL7vr_kFNXDB7JnTKGR6ZX_kqQGjUqeBQ7&si=XAfIlmkHPb5N08BR" target="_blank"> Click this to see my updated blog</a></li>
+        	  </ul>
+      		 </section>
+     		 <section className='aboutMe_tab2s2'>
+        	  <h1>Main show/tell stuff</h1>
+        	  <div className='aboutMe_tab2LinkList'><img src={require("./../IMG/clickHere.gif")} alt="404"></img><p>Blogs</p></div>
+        	  <div className='aboutMe_tab2LinkList'><img src={require("./../IMG/clickHere.gif")} alt="404"></img><p>github</p></div>
+         	  <div className='aboutMe_tab2LinkList'><img src={require("./../IMG/clickHere.gif")} alt="404"></img><p>X</p></div>
+        	  <div className='aboutMe_tab2LinkList'><img src={require("./../IMG/clickHere.gif")} alt="404"></img><p>school</p></div>
+        	  <div className='aboutMe_tab2LinkList'><img src={require("./../IMG/clickHere.gif")} alt="404"></img><p>Blog#3</p></div>
+        	  <div className='aboutMe_tab2LinkList'><img src={require("./../IMG/clickHere.gif")} alt="404"></img><p>Blog#2</p></div>
+        	  <div className='aboutMe_tab2LinkList'><img src={require("./../IMG/clickHere.gif")} alt="404"></img><p>Blog#1</p></div>
+      		 </section>
+      		 <section className='aboutMe_tab2s3'>
+        	  <h1 className='aboutMe_tab2s3'>Experience gained</h1>
+        	  <p className='aboutMe_tab2s3'>So far the only experience I have is teaching at hixson high school shown by the Denise Burt-Turner Special Needs P.E award also some mentoring at chattanooga state community college for TN promise.</p>
+        	  <img className='aboutMe_tab2s3' src={require("./../IMG/rewardTeaching.jpg")} alt='error 404'></img>
+      		 </section>
+		</div>}
+		{ aboutMeAppPage === 3 && <div>
+		 <section className='aboutMe_tab3s1'>
+		  <p className='aboutMe_tab3s1'>If you're interested here's how to contact me and some information.</p>
+      		   <div className='aboutMe_tab3s1'>
+        	    <p className='aboutMe_tab3s1'>Lee F. Cash</p>
+           	    <p className='aboutMe_tab3s1'>leecash133@gmail.com</p>
+        	    <p className='aboutMe_tab3s1'>+1 762 222-3156</p>
+      		   </div>
+      		  <h1 className='aboutMe_tab3s1'>Profile - </h1>
+      		  <p className='aboutMe_tab3s1'>Highly motivated and creative college student dedicated to obtaining a degree in Web Design. Proficient in HTML, CSS, and JavaScript, with a commitment to staying abreast of industry trends and emerging technologies. Currently developing skills in Node.js and React JS. Seeking an opportunity to collaborate with cross-functional teams, eager to apply skills and contribute to innovative web design projects. Excited to bring technical skills and design sensibilities to a challenging and rewarding role in web design.</p>
+     		 </section>
+		</div>}
 	      </div>
          </Rnd>
 	}
