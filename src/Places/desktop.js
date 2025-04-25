@@ -3,9 +3,19 @@ import { Rnd } from 'react-rnd';
 export function DESKTOP() {
 	const [data, setData] = useState([]);
 	const [activeApp, setActiveApp] = useState(null);
+	const [activeApp1, setActiveApp1] = useState(null);
+	const [activeApp2, setActiveApp2] = useState(null);
+	const [activeApp3, setActiveApp3] = useState(null);
+	const [activeApp4, setActiveApp4] = useState(null);
+	const [activeApp5, setActiveApp5] = useState(null);
 	const [searchClickState, setSearchClickState] = useState(0);
-	const [showApp, setShowApp] = useState(1);
+	const [showApp1, setShowApp1] = useState(null);
+	const [showApp2, setShowApp2] = useState(null);
+	const [showApp3, setShowApp3] = useState(null);
+	const [showApp4, setShowApp4] = useState(null);
+	const [showApp5, setShowApp5] = useState(null);
 	const [aboutMeAppPage, setAboutMeAppPage] = useState(0);
+	const [bSearchURL, setBSearchURL] = useState("");
 	useEffect(()=> {
 		fetch("http://localhost:3308/data")
 		.then(res => res.json())
@@ -19,29 +29,145 @@ export function DESKTOP() {
 		//setActiveApp(1);
 	}
 	function searchAction(e){
-		var searchApp = document.getElementById('searchApp');
+		//var searchApp = document.getElementById('searchApp');
 		if(e.key === "Enter"){
+			if(e.target.value === "about app") {
+				if(activeApp5 === null) {
+					setShowApp5(1);
+					setActiveApp5(1);
+				}
+				if(activeApp5 === 1){
+					setShowApp5(null);
+					setActiveApp5(null);
+				}
+			}
+			if(e.target.value === "about me app") {
+				if(activeApp4 === null) {
+					setShowApp4(1);
+					setActiveApp4(1);
+				}
+				if(activeApp4 === 1){
+					setShowApp4(null);
+					setActiveApp4(null);
+				}
+			}
+			if(e.target.value === "browser"){
+				if(activeApp3 === null){
+					setShowApp3(1);
+					setActiveApp3(1);
+				}
+				if(activeApp3 === 1){
+					setShowApp3(null);
+					setActiveApp3(null);
+				}
+			}
+			if(e.target.value === "music app") {
+				if(activeApp2 === null) {
+					setShowApp2(1);
+					setActiveApp2(1);
+				}
+				if(activeApp2 === 1){
+					setShowApp2(null);
+					setActiveApp2(null);
+				}
+			}
+			if(e.target.value === "terminal") {
+				if(activeApp1 === null) {
+					setShowApp1(1);
+					setActiveApp1(1);
+				}
+				if(activeApp1 === 1){
+					setShowApp1(null);
+					setActiveApp1(null);
+				}
+			}
 			setSearchClickState(0);
 		}
 	}
-	function showApp1(){
+	function showApp1f(){
 		   setAboutMeAppPage(1);
 	}
-	function showApp2(){
+	function showApp2f(){
 		   setAboutMeAppPage(2);
 	}
-	function showApp3(){
+	function showApp3f(){
 		   setAboutMeAppPage(3);
+	}
+	function bSearch(e) {
+		if(e.key === 'Enter') {
+			//var inputB = e.target.value;
+			if(e.target.value) {
+				var inputValue = e.target.value;
+				let finalURL = inputValue.startsWith('http') ? inputValue : `https://${inputValue}`;
+				setBSearchURL(finalURL);
+			}
+		}
+	}
+	function app1toggle() {
+		if(showApp1 === 1) {
+			setShowApp1(0);
+		}
+		if(showApp1 === 0) {
+			setShowApp1(1);
+		}
+	}
+	function app2toggle() {
+		if(showApp2 === 1) {
+			setShowApp2(0);
+		}
+		if(showApp2 === 0) {
+			setShowApp2(1);
+		}
+	}
+	function app3toggle() {
+		if(showApp3 === 1) {
+			setShowApp3(0);
+		}
+		if(showApp3 === 0) {
+			setShowApp3(1);
+		}
+	}
+	function app4toggle() {
+		if(showApp4 === 1) {
+			setShowApp4(0);
+		}
+		if(showApp4 === 0) {
+			setShowApp4(1);
+		}
+	}
+	function app5toggle() {
+		if(showApp5 === 1) {
+			setShowApp5(0);
+		}
+		if(showApp5 === 0) {
+			setShowApp5(1);
+		}
 	}
 return (<div className='pc_div'>
 	<main className='above_bar'>
-	{ showApp === 1 && 
+	{ showApp5 === 1 &&
+        <Rnd
+              default={{
+                x: 100,
+                y: 100,
+                width: 300,
+                height: 200,
+              }}
+              bounds="window"
+              minWidth={200}
+              minHeight={100}
+            >
+              <div className='aboutMe' style={{boxSizing: 'border-box'}}>
+         <p>app5 aboutApp</p>
+        </div>
+        </Rnd>}
+	{ showApp4 === 1 && 
 	 <Rnd
 	      default={{
 	        x: 100,
 	        y: 100,
-	        width: 300,
-	        height: 200,
+	        width: 500,
+	        height: 540,
 	      }}
 	      bounds="window"
 	      minWidth={200}
@@ -51,9 +177,9 @@ return (<div className='pc_div'>
 		<header className='aboutMe_header'>
 		 <nav className='aboutMe_nav'>
 		  <ui className='aboutMe_Hui'>
-		   <li className='aboutMe_Hui_li'><button className='aboutMe_buttons' onClick={showApp1}>about me</button></li>
-		   <li className='aboutMe_Hui_li'><button className='aboutMe_buttons' onClick={showApp2}>skills</button></li>
-		   <li className='aboutMe_Hui_li'><button className='aboutMe_buttons' onClick={showApp3}>contact</button></li>
+		   <li className='aboutMe_Hui_li'><button className='aboutMe_buttons' onClick={showApp1f}>about me</button></li>
+		   <li className='aboutMe_Hui_li'><button className='aboutMe_buttons' onClick={showApp2f}>skills</button></li>
+		   <li className='aboutMe_Hui_li'><button className='aboutMe_buttons' onClick={showApp3f}>contact</button></li>
 		  </ui>
 		 </nav>
 		</header>
@@ -104,13 +230,10 @@ return (<div className='pc_div'>
       		 </section>
      		 <section className='aboutMe_tab2s2'>
         	  <h1>Main show/tell stuff</h1>
-        	  <div className='aboutMe_tab2LinkList'><img src={require("./../IMG/clickHere.gif")} alt="404"></img><p>Blogs</p></div>
-        	  <div className='aboutMe_tab2LinkList'><img src={require("./../IMG/clickHere.gif")} alt="404"></img><p>github</p></div>
-         	  <div className='aboutMe_tab2LinkList'><img src={require("./../IMG/clickHere.gif")} alt="404"></img><p>X</p></div>
-        	  <div className='aboutMe_tab2LinkList'><img src={require("./../IMG/clickHere.gif")} alt="404"></img><p>school</p></div>
-        	  <div className='aboutMe_tab2LinkList'><img src={require("./../IMG/clickHere.gif")} alt="404"></img><p>Blog#3</p></div>
-        	  <div className='aboutMe_tab2LinkList'><img src={require("./../IMG/clickHere.gif")} alt="404"></img><p>Blog#2</p></div>
-        	  <div className='aboutMe_tab2LinkList'><img src={require("./../IMG/clickHere.gif")} alt="404"></img><p>Blog#1</p></div>
+        	  <div className='aboutMe_tab2LinkList'><img onClick={() => {window.open('https://youtube.com/playlist?list=PL7vr_kFNXDB7JnTKGR6ZX_kqQGjUqeBQ7&si=k_Q--_StUMwJtDwV');}} src={require("./../IMG/clickHere.gif")} alt="404"></img><p>Blogs</p></div>
+        	  <div className='aboutMe_tab2LinkList'><img onClick={() => {window.open('https://github.com/LeeFCash');}} src={require("./../IMG/clickHere.gif")} alt="404"></img><p>github</p></div>
+         	  <div className='aboutMe_tab2LinkList'><img onClick={() => {window.open('https://x.com/LeeCash93973076');}} src={require("./../IMG/clickHere.gif")} alt="404"></img><p>X</p></div>
+        	  <div className='aboutMe_tab2LinkList'><img onClick={() => {window.open('https://youtube.com/playlist?list=PL7vr_kFNXDB5Lk_Ag8mthtbyt5WadyrRD&si=YpkuKHsEZhNl1zV2');}} src={require("./../IMG/clickHere.gif")} alt="404"></img><p>Game Coding Club - video stuff</p></div>
       		 </section>
       		 <section className='aboutMe_tab2s3'>
         	  <h1 className='aboutMe_tab2s3'>Experience gained</h1>
@@ -133,6 +256,60 @@ return (<div className='pc_div'>
 	      </div>
          </Rnd>
 	}
+	{ showApp3 === 1 && 
+	<Rnd
+              default={{
+                x: 100,
+                y: 100,
+                width: 500,
+                height: 300,
+              }}
+              bounds="window"
+              minWidth={200}
+              minHeight={100}
+            >
+              <div className='aboutMe' style={{boxSizing: 'border-box'}}>
+	 <iframe className='webV' src={bSearchURL} title=" for searching"></iframe>
+	 <input onKeyDown={bSearch}></input>
+	 <ul>
+	  <li>websites that works: </li>
+	  <li onClick={() => setBSearchURL('https://www.wikipedia.org/')}>https://www.wikipedia.org/</li>
+          <li onClick={() => setBSearchURL('https://www.youtube.com/embed/videoseries?si=21q2IJqXbE8AXbC7&list=PL7vr_kFNXDB7JnTKGR6ZX_kqQGjUqeBQ7')}>My YouTube blog Playlist</li>
+	 </ul>
+	</div>
+	</Rnd>}
+	{ showApp2 === 1 &&
+        <Rnd
+              default={{
+                x: 100,
+                y: 100,
+                width: 300,
+                height: 200,
+              }}
+              bounds="window"
+              minWidth={200}
+              minHeight={100}
+            >
+              <div className='aboutMe' style={{boxSizing: 'border-box'}}>
+         <p>app2 music app</p>
+        </div>
+        </Rnd>}
+	{ showApp1 === 1 &&
+        <Rnd
+              default={{
+                x: 100,
+                y: 100,
+                width: 300,
+                height: 200,
+              }}
+              bounds="window"
+              minWidth={200}
+              minHeight={100}
+            >
+              <div className='aboutMe' style={{boxSizing: 'border-box'}}>
+         <p>app1 terminal </p>
+        </div>
+        </Rnd>}
 	</main>
         <main className='doBar_main'>
 	{ activeApp !== 0 && <div className='emptyBar'>
@@ -140,20 +317,30 @@ return (<div className='pc_div'>
                 search
           </div>
          </div>}
-	{ activeApp !== null && <div className='emptyBar'>
-	  <div onClick={searchClick} className='emptyBar_search'>
-		search 
-		{ activeApp === 1 && <div>
-				<img className='bottom_bar_allIMG' src={require('./../IMG/rmR.png')} alt="rmR"></img>
-				<img className='bottom_bar_allIMG' src={require('./../IMG/magnifying_glass.png')} alt="rmR"></img>
-				<img className='bottom_bar_allIMG' src={require('./../IMG/brave.png')} alt="rmR"></img>
-				<img className='bottom_bar_allIMG' src={require('./../IMG/about_me_app.png')} alt="rmR"></img>
-				<img className='bottom_bar_allIMG' src={require('./../IMG/questions_app.png')} alt="rmR"></img>
+	<div className='emptyBar'>
+	  <div className='emptyBar_search'>
+		 <p onClick={searchClick}>
+		  search
+	         </p>
+		{ activeApp1 === 1 && <div>
+				<img className='bottom_bar_allIMG' onClick={app1toggle} src={require('./../IMG/rmR.png')} alt="rmR"></img>
+		</div>}
+		{ activeApp2 === 1 && <div>
+				<img className='bottom_bar_allIMG' onClick={app2toggle} src={require('./../IMG/magnifying_glass.png')} alt="rmR"></img>
+		</div>}
+		{ activeApp3 === 1 && <div>
+				<img className='bottom_bar_allIMG' onClick={app3toggle} src={require('./../IMG/brave.png')} alt="rmR"></img>
+		</div>}
+		{ activeApp4 === 1 && <div>
+				<img className='bottom_bar_allIMG' onClick={app4toggle} src={require('./../IMG/about_me_app.png')} alt="rmR"></img>
+		</div>}
+		{ activeApp5 === 1 && <div>
+				<img className='bottom_bar_allIMG' onClick={app5toggle} src={require('./../IMG/questions_app.png')} alt="rmR"></img>
 		</div>} 
 	  </div>
-	 </div>}
+	 </div>
 	{ searchClickState === 1 && <div className='searchClick'>
-	<input onKeyDown={searchAction} id='searchApp'></input>
+	<input onKeyDown={searchAction}></input>
 	<p className='searchClick_text'> names of apps<br />
 		{appNames}</p>
 	</div>}

@@ -15,6 +15,6 @@ INSERT INTO PCinfo (owner_of_pc, login_password, links, app, terminal_location, 
 (null, null, "https://youtube.com/playlist?list=PL7vr_kFNXDB7JnTKGR6ZX_kqQGjUqeBQ7&si=Jvgb-39VlKnwH0JQ", "browser", null, "/home/leecash", "conf.pc"),
 (null, null, "https://youtube.com/playlist?list=PL7vr_kFNXDB5Lk_Ag8mthtbyt5WadyrRD&si=0r05mrQW_Hk7Yazf", "aboutMeApp", null, "/home", null),
 (null, null, null, "aboutApp", null, "/", null),
-(null, null, null, "editer", null, "/etc", null),
+(null, null, null, "music app", null, "/etc", null),
 (null, null, null, null, null, "/etc/settings", null);
 -- SELECT * from PCinfo;
