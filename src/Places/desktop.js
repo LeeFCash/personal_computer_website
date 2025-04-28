@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Rnd } from 'react-rnd';
+
 export function DESKTOP() {
 	const [data, setData] = useState([]);
 	const [activeApp, setActiveApp] = useState(null);
@@ -16,6 +17,7 @@ export function DESKTOP() {
 	const [showApp5, setShowApp5] = useState(null);
 	const [aboutMeAppPage, setAboutMeAppPage] = useState(0);
 	const [bSearchURL, setBSearchURL] = useState("");
+  	const [currentPath, setCurrentPath] = useState('/home/user');
 	useEffect(()=> {
 		fetch("http://localhost:3308/data")
 		.then(res => res.json())
@@ -23,7 +25,10 @@ export function DESKTOP() {
 		.catch(err => console.log(err));
 	}, []);
 	console.log('Data:', data);
+	const dataCopy = JSON.parse(JSON.stringify(data));
 	const appNames = data.map(item => item.app).join(', ');
+	const lsHomeNames = dataCopy.map(item => item.lsHome).join(', ');
+	console.log(lsHomeNames);
 	function searchClick(){
 		setSearchClickState(1);
 		//setActiveApp(1);
@@ -143,6 +148,17 @@ export function DESKTOP() {
 			setShowApp5(1);
 		}
 	}
+	var terminal_output = document.getElementById('terminal_output');
+	function terminalInput(e) {
+		if(e.key === 'Enter') {
+			if(e.target.value === 'ls') {
+				if(dataCopy[0].terminal_location === '~'){
+					//
+				}
+			}
+		}
+	}
+
 return (<div className='pc_div'>
 	<main className='above_bar'>
 	{ showApp5 === 1 &&
@@ -150,15 +166,39 @@ return (<div className='pc_div'>
               default={{
                 x: 100,
                 y: 100,
-                width: 300,
-                height: 200,
+                width: 500,
+                height: 600,
               }}
               bounds="window"
               minWidth={200}
               minHeight={100}
             >
-              <div className='aboutMe' style={{boxSizing: 'border-box'}}>
-         <p>app5 aboutApp</p>
+        <div className='aboutMe' style={{boxSizing: 'border-box'}}>
+         <div>
+	  <p>What is this website about?</p>
+	  <ul>
+	   <li>To show what I can do either directly or indirectly.</li>
+	   <li>To tell other what I like or have done.</li>
+	   <li>To get other that are intrested in the same thing to come together weather by me or others to hangout or learn from each other.</li>
+	   <li>To help me get a job when needed.</li>
+	  </ul>
+	 </div>
+         <div>
+	  <p>Why did I make this website?</p>
+	  <p>in part due to me wanting to make a website like this and in part due to Me wanting a better website for my digital-portfolio than what I had/have(I made the old website myself and this one)</p>
+	 </div>
+         <div>
+	  <p>How to resize and move the apps in this website?</p>
+	  <p>To move the app click and hold middle eara and to resize do the same but on the edge.(why not try it on this app)</p>
+	 </div>
+         <div>
+	  <p>How to changed music in music app?</p>
+	  <p>Click the 3 lines next to the name of video than pick the song you want.(music I have in my playlist)</p>
+	 </div>
+         <div>
+	  <p>How do I use the terminal?</p>
+	  <p>Use the terminal in a similar way that linux terminal works like using the commands ls, cd, cat, etc...(if more)</p>
+	 </div>
         </div>
         </Rnd>}
 	{ showApp4 === 1 && 
@@ -291,7 +331,8 @@ return (<div className='pc_div'>
               minHeight={100}
             >
               <div className='aboutMe' style={{boxSizing: 'border-box'}}>
-         <p>app2 music app</p>
+         <iframe width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?si=8BfF0d38YH6LTKEs&amp;list=PL7vr_kFNXDB5bufsmOkDHEEdwFI75cMs3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+	 <p>PlayList of music I like. (Lee Cash)</p>
         </div>
         </Rnd>}
 	{ showApp1 === 1 &&
@@ -307,7 +348,8 @@ return (<div className='pc_div'>
               minHeight={100}
             >
               <div className='aboutMe' style={{boxSizing: 'border-box'}}>
-         <p>app1 terminal </p>
+    	 <div id='terminal_output'></div>
+	 <input onKeyDown={terminalInput}></input>
         </div>
         </Rnd>}
 	</main>
