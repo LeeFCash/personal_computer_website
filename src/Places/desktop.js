@@ -18,6 +18,7 @@ export function DESKTOP() {
 	const [aboutMeAppPage, setAboutMeAppPage] = useState(0);
 	const [bSearchURL, setBSearchURL] = useState("");
   	const [currentPath, setCurrentPath] = useState('/home/user');
+  	const [terminalState, setTerminalState] = useState('/home/user');
 	useEffect(()=> {
 		fetch("http://localhost:3308/data")
 		.then(res => res.json())
@@ -348,7 +349,14 @@ return (<div className='pc_div'>
               minHeight={100}
             >
               <div className='aboutMe' style={{boxSizing: 'border-box'}}>
-    	 <div id='terminal_output'></div>
+		{ terminalState === '~' && <div id='terminal_output'></div>}
+		{ terminalState === '~ ls' && <div id='terminal_output'><p> . .. Downloads Videos Pictures</p></div>}
+		{ terminalState === '~/Downloads' && <div id='terminal_output'></div>}
+		{ terminalState === '~/Downloads ls' && <div id='terminal_output'></div>}
+		{ terminalState === '~/Videos' && <div id='terminal_output'></div>}
+		{ terminalState === '~/Videos ls' && <div id='terminal_output'></div>}
+		{ terminalState === '~/Pictures' && <div id='terminal_output'></div>}
+		{ terminalState === '~/Pictures ls' && <div id='terminal_output'></div>}
 	 <input onKeyDown={terminalInput}></input>
         </div>
         </Rnd>}
