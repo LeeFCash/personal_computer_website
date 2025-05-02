@@ -19,17 +19,20 @@ export function DESKTOP() {
 	const [bSearchURL, setBSearchURL] = useState("");
   	const [currentPath, setCurrentPath] = useState('/home/user');
   	const [terminalState, setTerminalState] = useState('/home/user');
+  	//const [current_terminal_location, setCurrent_terminal_location] = useState(null);
+	// current_terminal_location
 	useEffect(()=> {
 		fetch("http://localhost:3308/data")
 		.then(res => res.json())
 		.then(data => setData(data))
 		.catch(err => console.log(err));
+            	//setCurrent_terminal_location(dataCopy[0].current_terminal_location);
+  		//const [current_terminal_location, setCurrent_terminal_location] = useState(null);
 	}, []);
 	console.log('Data:', data);
-	const dataCopy = JSON.parse(JSON.stringify(data));
-	const appNames = data.map(item => item.app).join(', ');
+        const dataCopy = JSON.parse(JSON.stringify(data));
 	const lsHomeNames = dataCopy.map(item => item.lsHome).join(', ');
-	console.log(lsHomeNames);
+	const appNames = data.map(item => item.app).join(', ');
 	function searchClick(){
 		setSearchClickState(1);
 		//setActiveApp(1);
@@ -153,10 +156,23 @@ export function DESKTOP() {
 	function terminalInput(e) {
 		if(e.key === 'Enter') {
 			if(e.target.value === 'ls') {
-				if(dataCopy[0].terminal_location === '~'){
-					//
+				if(dataCopy[0].current_terminal_location === '~'){
+					setTerminalState('~ ls');
+				}
+				if(dataCopy[0].current_terminal_location === '~/Downloads'){
+					setTerminalState('~/Downloads ls');
+				}
+				if(dataCopy[0].current_terminal_location === '~/Videos'){
+					setTerminalState('~/Videos ls');
+				}
+				if(dataCopy[0].current_terminal_location === '~/Pictures'){
+					setTerminalState('~/Pictures ls');
 				}
 			}
+			if(e.target.value === 'cd Downloads' && dataCopy[0].current_terminal_location === '~') {dataCopy[0].current_terminal_location = "~/Downloads";}
+			if(e.target.value === 'cd Videos' && dataCopy[0].current_terminal_location === '~') {dataCopy[0].current_terminal_location = "~/Videos";}
+			if(e.target.value === 'cd Pictures' && dataCopy[0].current_terminal_location === '~') {dataCopy[0].current_terminal_location = "~/Pictures";}
+			if(e.target.value === 'cd ~') {dataCopy[0].current_terminal_location = "~";}
 		}
 	}
 
@@ -349,14 +365,12 @@ return (<div className='pc_div'>
               minHeight={100}
             >
               <div className='aboutMe' style={{boxSizing: 'border-box'}}>
-		{ terminalState === '~' && <div id='terminal_output'></div>}
+		<div>
 		{ terminalState === '~ ls' && <div id='terminal_output'><p> . .. Downloads Videos Pictures</p></div>}
-		{ terminalState === '~/Downloads' && <div id='terminal_output'></div>}
-		{ terminalState === '~/Downloads ls' && <div id='terminal_output'></div>}
-		{ terminalState === '~/Videos' && <div id='terminal_output'></div>}
-		{ terminalState === '~/Videos ls' && <div id='terminal_output'></div>}
-		{ terminalState === '~/Pictures' && <div id='terminal_output'></div>}
-		{ terminalState === '~/Pictures ls' && <div id='terminal_output'></div>}
+		{ terminalState === '~/Downloads ls' && <div id='terminal_output'><p>. .. about_me_app.png brave.png clickHere.gif magnifying_glass.png questions_app.png rmR.png </p></div>}
+		{ terminalState === '~/Videos ls' && <div id='terminal_output'><p>. .. blog_playlist.mp4 </p></div>}
+		{ terminalState === '~/Pictures ls' && <div id='terminal_output'><p>. .. awardDC.png  diploma.jpg  meG.jpg  MeIMG.jpg  rewardDiscipline.png  rewardTeaching.jpg </p></div>}
+		</div>
 	 <input onKeyDown={terminalInput}></input>
         </div>
         </Rnd>}
