@@ -19,6 +19,7 @@ export function DESKTOP() {
 	const [bSearchURL, setBSearchURL] = useState("");
   	const [currentPath, setCurrentPath] = useState('/home/user');
   	const [terminalState, setTerminalState] = useState('/home/user');
+  	const [current_terminal_location, setCurrent_terminal_location] = useState('~');
   	//const [current_terminal_location, setCurrent_terminal_location] = useState(null);
 	// current_terminal_location
 	useEffect(()=> {
@@ -155,24 +156,18 @@ export function DESKTOP() {
 	var terminal_output = document.getElementById('terminal_output');
 	function terminalInput(e) {
 		if(e.key === 'Enter') {
-			if(e.target.value === 'ls') {
-				if(dataCopy[0].current_terminal_location === '~'){
-					setTerminalState('~ ls');
-				}
-				if(dataCopy[0].current_terminal_location === '~/Downloads'){
-					setTerminalState('~/Downloads ls');
-				}
-				if(dataCopy[0].current_terminal_location === '~/Videos'){
-					setTerminalState('~/Videos ls');
-				}
-				if(dataCopy[0].current_terminal_location === '~/Pictures'){
-					setTerminalState('~/Pictures ls');
-				}
-			}
-			if(e.target.value === 'cd Downloads' && dataCopy[0].current_terminal_location === '~') {dataCopy[0].current_terminal_location = "~/Downloads";}
-			if(e.target.value === 'cd Videos' && dataCopy[0].current_terminal_location === '~') {dataCopy[0].current_terminal_location = "~/Videos";}
-			if(e.target.value === 'cd Pictures' && dataCopy[0].current_terminal_location === '~') {dataCopy[0].current_terminal_location = "~/Pictures";}
-			if(e.target.value === 'cd ~') {dataCopy[0].current_terminal_location = "~";}
+			if(e.target.value === 'ls' && current_terminal_location === '~'){setTerminalState('~ ls');}
+			if(e.target.value === 'ls' && current_terminal_location === '~/Downloads'){setTerminalState('~/Downloads ls');}
+			if(e.target.value === 'ls' && current_terminal_location === '~/Videos'){setTerminalState('~/Videos ls');}
+			if(e.target.value === 'ls' && current_terminal_location === '~/Pictures'){setTerminalState('~/Pictures ls');}
+			if(e.target.value === 'cd Downloads' && current_terminal_location === '~'){setCurrent_terminal_location('~/Downloads');}
+			if(e.target.value === 'cd Videos' && current_terminal_location === '~'){setCurrent_terminal_location('~/Videos');}
+			if(e.target.value === 'cd Pictures' && current_terminal_location === '~'){setCurrent_terminal_location('~/Pictures');}
+			if(e.target.value === 'cd ~'){setCurrent_terminal_location('~');}
+			if(e.target.value === 'pwd' && current_terminal_location === '~'){setTerminalState('~ pwd');}
+			if(e.target.value === 'pwd' && current_terminal_location === '~/Downloads'){setTerminalState('~/Downloads pwd');}
+			if(e.target.value === 'pwd' && current_terminal_location === '~/Videos'){setTerminalState('~/Videos pwd');}
+			if(e.target.value === 'pwd' && current_terminal_location === '~/Pictures'){setTerminalState('~/Pictures pwd');}
 		}
 	}
 
@@ -370,6 +365,10 @@ return (<div className='pc_div'>
 		{ terminalState === '~/Downloads ls' && <div id='terminal_output'><p>. .. about_me_app.png brave.png clickHere.gif magnifying_glass.png questions_app.png rmR.png </p></div>}
 		{ terminalState === '~/Videos ls' && <div id='terminal_output'><p>. .. blog_playlist.mp4 </p></div>}
 		{ terminalState === '~/Pictures ls' && <div id='terminal_output'><p>. .. awardDC.png  diploma.jpg  meG.jpg  MeIMG.jpg  rewardDiscipline.png  rewardTeaching.jpg </p></div>}
+		{ terminalState === '~ pwd' && <div id='terminal_output'><p> /home/leecash</p></div>}
+		{ terminalState === '~/Downloads pwd' && <div id='terminal_output'><p> /home/leecash/Downloads</p></div>}
+		{ terminalState === '~/Videos pwd' && <div id='terminal_output'><p> /home/leecash/Videos</p></div>}
+		{ terminalState === '~/Pictures pwd' && <div id='terminal_output'><p> /home/leecash/Pictures</p></div>}
 		</div>
 	 <input onKeyDown={terminalInput}></input>
         </div>
