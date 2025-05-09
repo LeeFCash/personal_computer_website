@@ -90,6 +90,7 @@ export function DESKTOP() {
 					setShowApp1(null);
 					setActiveApp1(null);
 				}
+				alert('I know the terminal work not the same(I just like it)');
 			}
 			setSearchClickState(0);
 		}
@@ -168,6 +169,13 @@ export function DESKTOP() {
 			if(e.target.value === 'pwd' && current_terminal_location === '~/Downloads'){setTerminalState('~/Downloads pwd');}
 			if(e.target.value === 'pwd' && current_terminal_location === '~/Videos'){setTerminalState('~/Videos pwd');}
 			if(e.target.value === 'pwd' && current_terminal_location === '~/Pictures'){setTerminalState('~/Pictures pwd');}
+			if(e.target.value === 'xdg-open blog_playlist.mp4' && current_terminal_location === '~/Videos'){setTerminalState('~/Videos xdg-open');}
+			{/* fix the nothing poped up and add IMG */}if(e.target.value === 'xdg-open awardDC.png' && current_terminal_location === '~/Pictures'){setTerminalState('~/Videos xdg-open awardDC.png');}
+			if(e.target.value === 'xdg-open diploma.jpg' && current_terminal_location === '~/Pictures'){setTerminalState('~/Videos xdg-open diploma.jpg');}
+			if(e.target.value === 'xdg-open meG.jpg' && current_terminal_location === '~/Pictures'){setTerminalState('~/Videos xdg-open meG.jpg');}
+			if(e.target.value === 'xdg-open MeIMG.jpg' && current_terminal_location === '~/Pictures'){setTerminalState('~/Videos xdg-open MeIMG.jpg');}
+			if(e.target.value === 'xdg-open rewardDiscipline.png' && current_terminal_location === '~/Pictures'){setTerminalState('~/Videos xdg-open rewardDiscipline.png');}
+			if(e.target.value === 'xdg-open rewardTeaching.jpg' && current_terminal_location === '~/Pictures'){setTerminalState('~/Videos xdg-open rewardTeaching.jpg');}
 		}
 	}
 
@@ -359,16 +367,23 @@ return (<div className='pc_div'>
               minWidth={200}
               minHeight={100}
             >
-              <div className='aboutMe' style={{boxSizing: 'border-box'}}>
-		<div>
-		{ terminalState === '~ ls' && <div id='terminal_output'><p> . .. Downloads Videos Pictures</p></div>}
-		{ terminalState === '~/Downloads ls' && <div id='terminal_output'><p>. .. about_me_app.png brave.png clickHere.gif magnifying_glass.png questions_app.png rmR.png </p></div>}
-		{ terminalState === '~/Videos ls' && <div id='terminal_output'><p>. .. blog_playlist.mp4 </p></div>}
-		{ terminalState === '~/Pictures ls' && <div id='terminal_output'><p>. .. awardDC.png  diploma.jpg  meG.jpg  MeIMG.jpg  rewardDiscipline.png  rewardTeaching.jpg </p></div>}
-		{ terminalState === '~ pwd' && <div id='terminal_output'><p> /home/leecash</p></div>}
-		{ terminalState === '~/Downloads pwd' && <div id='terminal_output'><p> /home/leecash/Downloads</p></div>}
-		{ terminalState === '~/Videos pwd' && <div id='terminal_output'><p> /home/leecash/Videos</p></div>}
-		{ terminalState === '~/Pictures pwd' && <div id='terminal_output'><p> /home/leecash/Pictures</p></div>}
+              <div className='aboutMe' style={{boxSizing: 'border-box', width: '100%', height: '100%'}}>
+		<div style={{width: '100%', height: '100%'}}>
+		{ terminalState === '~ ls' && <div style={{ width: '100%', height: '100%'}} id='terminal_output'><p> . .. Downloads Videos Pictures</p></div>}
+		{ terminalState === '~/Downloads ls' && <div style={{ width: '100%', height: '100%'}} id='terminal_output'><p>. .. about_me_app.png brave.png clickHere.gif magnifying_glass.png questions_app.png rmR.png </p></div>}
+		{ terminalState === '~/Videos ls' && <div style={{ width: '100%', height: '100%'}} id='terminal_output'><p>. .. blog_playlist.mp4 </p></div>}
+		{ terminalState === '~/Pictures ls' && <div style={{ width: '100%', height: '100%'}} id='terminal_output'><p>. .. awardDC.png  diploma.jpg  meG.jpg  MeIMG.jpg  rewardDiscipline.png  rewardTeaching.jpg </p></div>}
+		{ terminalState === '~ pwd' && <div style={{ width: '100%', height: '100%'}} id='terminal_output'><p> /home/leecash</p></div>}
+		{ terminalState === '~/Downloads pwd' && <div style={{ width: '100%', height: '100%'}} id='terminal_output'><p> /home/leecash/Downloads</p></div>}
+		{ terminalState === '~/Videos pwd' && <div style={{ width: '100%', height: '100%'}} id='terminal_output'><p> /home/leecash/Videos</p></div>}
+		{ terminalState === '~/Pictures pwd' && <div style={{ width: '100%', height: '100%'}} id='terminal_output'><p> /home/leecash/Pictures</p></div>}
+		{ terminalState === '~/Videos xdg-open' && <div style={{ width: '100%', height: '100%'}} id='terminal_output'><iframe className='terminal-blog' width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?si=ngIAx6kMZeGt5hYH&amp;list=PL7vr_kFNXDB7JnTKGR6ZX_kqQGjUqeBQ7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>}
+		{ terminalState === '~/Pictures xdg-open awardDC.png' && <div style={{ width: '100%', height: '100%'}} id='terminal_output'><p> awardDC.png </p></div>}
+		{ terminalState === '~/Pictures xdg-open diploma.jpg' && <div style={{ width: '100%', height: '100%'}} id='terminal_output'><p> diploma.jpg </p></div>}
+		{ terminalState === '~/Pictures xdg-open meG.jpg' && <div style={{ width: '100%', height: '100%'}} id='terminal_output'><p> meG.jpg </p></div>}
+		{ terminalState === '~/Pictures xdg-open MeIMG.jpg' && <div style={{ width: '100%', height: '100%'}} id='terminal_output'><p> MeIMG.jpg </p></div>}
+		{ terminalState === '~/Pictures xdg-open rewardDiscipline.png' && <div style={{ width: '100%', height: '100%'}} id='terminal_output'><p> rewardDiscipline.png </p></div>}
+		{ terminalState === '~/Pictures xdg-open rewardTeaching.jpg' && <div style={{ width: '100%', height: '100%'}} id='terminal_output'><p> rewardTeaching.jpg </p></div>}
 		</div>
 	 <input onKeyDown={terminalInput}></input>
         </div>
